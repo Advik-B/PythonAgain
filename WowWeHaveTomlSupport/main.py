@@ -11,9 +11,9 @@ with open("sometoml.toml", "rb") as f:
 with open("somejson.json", "r") as f:
     jayson = json.load(f)
 
-def print_kv(dictobj: Union[dict, list], indent: int = 0):
-    if isinstance(dictobj, dict):
-        for key, value in dictobj.items():
+def print_kv(dataobj: Union[dict, list], indent: int = 0):
+    if isinstance(dataobj, dict):
+        for key, value in dataobj.items():
             if isinstance(value, dict):
                 print(" " * indent, key+":")
                 try:
@@ -22,8 +22,8 @@ def print_kv(dictobj: Union[dict, list], indent: int = 0):
                     print(" " * (indent + 4), "...")
             else:
                 print(" " * indent, key+":", value)
-    elif isinstance(dictobj, list):
-        for value in dictobj:
+    elif isinstance(dataobj, list):
+        for value in dataobj:
             print()
             print_kv(value, indent)
 
